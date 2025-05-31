@@ -79,4 +79,117 @@
   </style>
 </head>
 <body>
-  <div class="
+  <div class="container">
+    <div class="lang-switch">
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('ar')">العربية</button>
+    </div>
+
+    <header>
+      <h1 id="name">Sediq Ibrahim</h1>
+      <p id="title">Certified Fitness Trainer</p>
+    </header>
+
+    <section>
+      <h2 id="about-heading">About Me</h2>
+      <p id="about-text">Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.</p>
+    </section>
+
+    <section>
+      <h2 id="services-heading">Services</h2>
+      <ul id="services-list">
+        <li>Personal Training (In-person & Online)</li>
+        <li>Customized Workout Plans</li>
+        <li>Nutrition Guidance</li>
+        <li>Group Fitness Sessions</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="contact-heading">Contact</h2>
+      <p id="email-label">Email: <a class="contact-link" href="mailto:sdyqaldkany@gmail.com">sdyqaldkany@gmail.com</a></p>
+      <p id="phone-label">Phone: <a class="contact-link" href="tel:+0508270324">0508270324</a></p>
+    </section>
+
+    <section>
+      <h2 id="demo-heading">Workout Demo</h2>
+      <video width="100%" controls>
+        <source src="fitness-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <footer>
+      &copy; 2025 <span id="footer-name">Sediq Ibrahim Fitness Trainer</span>
+    </footer>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        title: "Certified Fitness Trainer",
+        aboutHeading: "About Me",
+        aboutText: "Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.",
+        servicesHeading: "Services",
+        services: [
+          "Personal Training (In-person & Online)",
+          "Customized Workout Plans",
+          "Nutrition Guidance",
+          "Group Fitness Sessions"
+        ],
+        contactHeading: "Contact",
+        emailLabel: "Email:",
+        phoneLabel: "Phone:",
+        demoHeading: "Workout Demo",
+        footerName: "Sediq Ibrahim Fitness Trainer"
+      },
+      ar: {
+        title: "مدرب لياقة معتمد",
+        aboutHeading: "عني",
+        aboutText: "شغوف بمساعدة العملاء على تحقيق أهدافهم في اللياقة البدنية من خلال خطط تدريب مخصصة ودعم مستمر.",
+        servicesHeading: "الخدمات",
+        services: [
+          "تدريب شخصي (حضوري وعبر الإنترنت)",
+          "خطط تمرين مخصصة",
+          "إرشادات غذائية",
+          "جلسات لياقة جماعية"
+        ],
+        contactHeading: "تواصل",
+        emailLabel: "البريد الإلكتروني:",
+        phoneLabel: "رقم الهاتف:",
+        demoHeading: "عرض تمرين",
+        footerName: "سديّق إبراهيم - مدرب لياقة"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+
+      const t = translations[lang];
+
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("about-heading").textContent = t.aboutHeading;
+      document.getElementById("about-text").textContent = t.aboutText;
+      document.getElementById("services-heading").textContent = t.servicesHeading;
+
+      const servicesList = document.getElementById("services-list");
+      servicesList.innerHTML = '';
+      t.services.forEach(service => {
+        const li = document.createElement("li");
+        li.textContent = service;
+        servicesList.appendChild(li);
+      });
+
+      document.getElementById("contact-heading").textContent = t.contactHeading;
+      document.getElementById("email-label").childNodes[0].textContent = t.emailLabel + " ";
+      document.getElementById("phone-label").childNodes[0].textContent = t.phoneLabel + " ";
+      document.getElementById("demo-heading").textContent = t.demoHeading;
+      document.getElementById("footer-name").textContent = t.footerName;
+    }
+
+    // Default language
+    setLanguage('en');
+  </script>
+</body>
+</html>
