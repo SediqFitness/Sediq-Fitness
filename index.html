@@ -5,69 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sediq Ibrahim - Fitness Trainer</title>
   <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center fixed;
-    background-size: cover;
-    color: #333;
-    direction: ltr;
-  }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      direction: ltr;
+    }
 
-  .container {
-    max-width: 480px;
-    margin: 40px auto;
-    background: rgba(255, 255, 255, 0.92); /* semi-transparent white */
-    padding: 20px 30px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    border-radius: 10px;
-  }
+    .container {
+      max-width: 480px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.92); /* semi-transparent white */
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
 
-  header, footer, section, .lang-switch {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+    header, footer, section, .lang-switch {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-  h1 {
-    color: #27ae60;
-  }
+    h1 {
+      color: #27ae60;
+    }
 
-  ul {
-    text-align: left;
-    padding-left: 20px;
-  }
+    ul {
+      text-align: left;
+      padding-left: 20px;
+    }
 
-  button {
-    padding: 8px 16px;
-    margin: 0 5px;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+    button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-  a.contact-link {
-    color: #27ae60;
-    text-decoration: none;
-    font-weight: bold;
-  }
+    a.contact-link {
+      color: #27ae60;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  a.contact-link:hover {
-    text-decoration: underline;
-  }
-</style>
+    a.contact-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="main-container">
     <div class="lang-switch">
       <button onclick="setLanguage('en')">English</button>
       <button onclick="setLanguage('ar')">العربية</button>
     </div>
 
     <header>
-      <h1 id="name">Sediq Ibrahim</h1>
+      <h1>Sediq Ibrahim</h1>
       <p id="title">Certified Fitness Trainer</p>
     </header>
 
@@ -101,13 +101,14 @@
     </section>
 
     <footer>
-      &copy; 2025 <span id="footer-name">Sediq Ibrahim Fitness Trainer</span>
+      <p id="footer-text">&copy; 2025 Sediq Ibrahim Fitness Trainer</p>
     </footer>
   </div>
 
   <script>
     const translations = {
       en: {
+        direction: "ltr",
         title: "Certified Fitness Trainer",
         aboutHeading: "About Me",
         aboutText: "Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.",
@@ -122,9 +123,10 @@
         emailLabel: "Email:",
         phoneLabel: "Phone:",
         demoHeading: "Workout Demo",
-        footerName: "Sediq Ibrahim Fitness Trainer"
+        footerText: "© 2025 Sediq Ibrahim Fitness Trainer"
       },
       ar: {
+        direction: "rtl",
         title: "مدرب لياقة معتمد",
         aboutHeading: "عني",
         aboutText: "شغوف بمساعدة العملاء على تحقيق أهدافهم في اللياقة البدنية من خلال خطط تدريب مخصصة ودعم مستمر.",
@@ -139,34 +141,31 @@
         emailLabel: "البريد الإلكتروني:",
         phoneLabel: "رقم الهاتف:",
         demoHeading: "عرض تمرين",
-        footerName: "سديّق إبراهيم - مدرب لياقة"
+        footerText: "© 2025 سديّق إبراهيم - مدرب لياقة"
       }
     };
 
     function setLanguage(lang) {
-      document.documentElement.lang = lang;
-      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-
       const t = translations[lang];
+      document.body.style.direction = t.direction;
+      document.getElementById('title').textContent = t.title;
+      document.getElementById('about-heading').textContent = t.aboutHeading;
+      document.getElementById('about-text').textContent = t.aboutText;
+      document.getElementById('services-heading').textContent = t.servicesHeading;
 
-      document.getElementById("title").textContent = t.title;
-      document.getElementById("about-heading").textContent = t.aboutHeading;
-      document.getElementById("about-text").textContent = t.aboutText;
-      document.getElementById("services-heading").textContent = t.servicesHeading;
-
-      const servicesList = document.getElementById("services-list");
-      servicesList.innerHTML = '';
-      t.services.forEach(service => {
-        const li = document.createElement("li");
-        li.textContent = service;
-        servicesList.appendChild(li);
+      const list = document.getElementById('services-list');
+      list.innerHTML = '';
+      t.services.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
       });
 
-      document.getElementById("contact-heading").textContent = t.contactHeading;
-      document.getElementById("email-label").childNodes[0].textContent = t.emailLabel + " ";
-      document.getElementById("phone-label").childNodes[0].textContent = t.phoneLabel + " ";
-      document.getElementById("demo-heading").textContent = t.demoHeading;
-      document.getElementById("footer-name").textContent = t.footerName;
+      document.getElementById('contact-heading').textContent = t.contactHeading;
+      document.getElementById('email-label').childNodes[0].nodeValue = t.emailLabel + ' ';
+      document.getElementById('phone-label').childNodes[0].nodeValue = t.phoneLabel + ' ';
+      document.getElementById('demo-heading').textContent = t.demoHeading;
+      document.getElementById('footer-text').textContent = t.footerText;
     }
 
     // Default language
