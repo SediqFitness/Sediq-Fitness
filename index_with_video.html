@@ -8,7 +8,7 @@
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      background: url('habibi.jpg') no-repeat center center fixed;
+      background: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e') no-repeat center center fixed;
       background-size: cover;
       color: #333;
     }
@@ -61,6 +61,11 @@
     a.contact-link:hover {
       text-decoration: underline;
     }
+
+    video {
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
   </style>
 </head>
 <body>
@@ -99,7 +104,7 @@
     <section>
       <h2 id="demo-heading">Workout Demo</h2>
       <video width="100%" controls>
-        <source src="fitness-demo.mp4" type="video/mp4">
+        <source src="fitness-demo.mov" type="video/quicktime">
         Your browser does not support the video tag.
       </video>
     </section>
@@ -173,7 +178,8 @@
       document.getElementById('footer-text').textContent = t.footerText;
     }
 
-    setLanguage('en'); // Default language
+    // Default to English
+    setLanguage('en');
   </script>
 </body>
 </html>
