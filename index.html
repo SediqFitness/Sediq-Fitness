@@ -11,15 +11,14 @@
       background: url('habibi.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #333;
-      direction: ltr;
     }
 
     .container {
       max-width: 480px;
       margin: 40px auto;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.9);
       padding: 20px 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
 
@@ -35,7 +34,7 @@
     ul {
       list-style-position: inside;
       padding: 0;
-      text-align: start;
+      text-align: left;
     }
 
     ul[dir="rtl"] {
@@ -174,8 +173,7 @@
       document.getElementById('footer-text').textContent = t.footerText;
     }
 
-    setLanguage('en'); // default
+    setLanguage('en'); // Default language
   </script>
 </body>
 </html>
-
