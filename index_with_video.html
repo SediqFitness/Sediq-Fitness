@@ -8,7 +8,7 @@
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center center fixed;
+      background: url('habibi.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #333;
       direction: ltr;
@@ -17,7 +17,7 @@
     .container {
       max-width: 480px;
       margin: 40px auto;
-      background: rgba(255, 255, 255, 0.92); /* semi-transparent white */
+      background: rgba(255, 255, 255, 0.92);
       padding: 20px 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       border-radius: 10px;
@@ -33,8 +33,13 @@
     }
 
     ul {
-      text-align: left;
-      padding-left: 20px;
+      list-style-position: inside;
+      padding: 0;
+      text-align: start;
+    }
+
+    ul[dir="rtl"] {
+      text-align: right;
     }
 
     button {
@@ -154,6 +159,7 @@
       document.getElementById('services-heading').textContent = t.servicesHeading;
 
       const list = document.getElementById('services-list');
+      list.setAttribute('dir', t.direction);
       list.innerHTML = '';
       t.services.forEach(item => {
         const li = document.createElement('li');
@@ -168,8 +174,8 @@
       document.getElementById('footer-text').textContent = t.footerText;
     }
 
-    // Default language
-    setLanguage('en');
+    setLanguage('en'); // default
   </script>
 </body>
 </html>
+
