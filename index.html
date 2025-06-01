@@ -8,7 +8,7 @@
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      background: url('habibi.jpg') no-repeat center center fixed;
+      background: url('https://images.unsplash.com/photo-1594737625785-cb98d0f1f0fc?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
       background-size: cover;
       color: #333;
     }
@@ -79,15 +79,11 @@
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
-    .lang-switch {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
     footer {
       text-align: center;
       font-size: 14px;
       color: #777;
+      margin-top: 30px;
     }
 
     .floating-menu {
@@ -171,6 +167,11 @@
       padding: 5px;
       font-size: 14px;
     }
+
+    .lang-switch {
+      text-align: center;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
@@ -186,11 +187,6 @@
   </div>
 
   <div class="container" id="main-container">
-    <div class="lang-switch">
-      <button onclick="setLanguage('en')">English</button>
-      <button onclick="setLanguage('ar')">العربية</button>
-    </div>
-
     <header>
       <img src="habibi.jpg" alt="Profile Picture" />
       <div>
@@ -269,6 +265,11 @@
       </div>
     </section>
 
+    <div class="lang-switch">
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('ar')">العربية</button>
+    </div>
+
     <footer>
       <p id="footer-text">&copy; 2025 Sediq Ibrahim Fitness Trainer</p>
     </footer>
@@ -277,98 +278,4 @@
   <script>
     const translations = {
       en: {
-        direction: "ltr",
-        title: "Certified Fitness Trainer",
-        aboutHeading: "About Me",
-        aboutText: "Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.",
-        servicesHeading: "Services",
-        services: [
-          "Personal Training (In-person & Online)",
-          "Customized Workout Plans",
-          "Nutrition Guidance",
-          "Group Fitness Sessions"
-        ],
-        contactHeading: "Contact",
-        emailLabel: "Email:",
-        phoneLabel: "Phone:",
-        demoHeading: "Workout Demo",
-        footerText: "© 2025 Sediq Ibrahim Fitness Trainer"
-      },
-      ar: {
-        direction: "rtl",
-        title: "مدرب لياقة معتمد",
-        aboutHeading: "عني",
-        aboutText: "شغوف بمساعدة العملاء على تحقيق أهدافهم في اللياقة البدنية من خلال خطط تدريب مخصصة ودعم مستمر.",
-        servicesHeading: "الخدمات",
-        services: [
-          "تدريب شخصي (حضوري وعبر الإنترنت)",
-          "خطط تمرين مخصصة",
-          "إرشادات غذائية",
-          "جلسات لياقة جماعية"
-        ],
-        contactHeading: "تواصل",
-        emailLabel: "البريد الإلكتروني:",
-        phoneLabel: "رقم الهاتف:",
-        demoHeading: "عرض تمرين",
-        footerText: "© 2025 سديّق إبراهيم - مدرب لياقة"
-      }
-    };
-
-    function setLanguage(lang) {
-      const t = translations[lang];
-      document.body.style.direction = t.direction;
-      document.getElementById('title').textContent = t.title;
-      document.getElementById('about-heading').textContent = t.aboutHeading;
-      document.getElementById('about-text').textContent = t.aboutText;
-      document.getElementById('services-heading').textContent = t.servicesHeading;
-
-      const list = document.getElementById('services-list');
-      list.setAttribute('dir', t.direction);
-      list.innerHTML = '';
-      t.services.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        list.appendChild(li);
-      });
-
-      document.getElementById('contact-heading').firstElementChild.textContent = t.contactHeading;
-      document.getElementById('email-label').childNodes[0].nodeValue = t.emailLabel + ' ';
-      document.getElementById('phone-label').childNodes[0].nodeValue = t.phoneLabel + ' ';
-      document.getElementById('demo-heading').firstElementChild.textContent = t.demoHeading;
-      document.getElementById('footer-text').textContent = t.footerText;
-    }
-
-    function toggleMenu() {
-      const menu = document.getElementById("dropdownMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".dropdown-menu a").forEach(link => {
-        link.addEventListener("click", () => {
-          document.getElementById("dropdownMenu").style.display = "none";
-        });
-      });
-      setLanguage('en');
-    });
-
-    function submitReview(event) {
-      event.preventDefault();
-      const rating = document.getElementById("rating").value;
-      const text = document.getElementById("review-text").value;
-      
-      if (!rating || !text) return;
-
-      const stars = "★★★★★☆☆☆☆".slice(5 - rating, 10 - rating);
-
-      const reviewDiv = document.createElement("div");
-      reviewDiv.className = "review";
-      reviewDiv.innerHTML = `<div class="stars">${stars}</div><p>${text}</p>`;
-
-      const form = document.getElementById("review-form");
-      form.parentNode.insertBefore(reviewDiv, form);
-      form.reset();
-    }
-  </script>
-</body>
-</html>
+        direction:
