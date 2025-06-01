@@ -171,7 +171,7 @@
     <div class="menu-content" id="menu">
       <a href="#services">Services</a>
       <a href="#reviews">Reviews</a>
-      <a href="#gallery">Gallery</a>
+      <a href="gallery.html">Gallery</a>
     </div>
   </nav>
 
@@ -216,7 +216,6 @@
       </form>
     </section>
 
-    <!-- Video Section -->
     <section>
       <h2 data-i18n="demo">Workout Demo</h2>
       <video controls>
@@ -273,7 +272,6 @@
       document.getElementById("menu").classList.toggle("show");
     }
 
-    // Auto-close menu when clicking outside
     window.onclick = function(event) {
       if (!event.target.matches('.menu-btn')) {
         const dropdown = document.getElementById("menu");
