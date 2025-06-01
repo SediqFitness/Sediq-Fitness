@@ -130,20 +130,6 @@
       background-color: #f0f0f0;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
     .review {
       margin-bottom: 15px;
     }
@@ -178,11 +164,11 @@
   <div class="floating-menu">
     <button onclick="toggleMenu()">☰ Menu</button>
     <div class="dropdown-menu" id="dropdownMenu">
-      <a href="#gallery-section">📸 Gallery</a>
       <a href="#services-heading">🏋️ Services</a>
       <a href="#review-section">⭐ Reviews</a>
       <a href="#contact-heading">📞 Contact</a>
       <a href="#demo-heading">🎥 Workout Demo</a>
+      <a href="#gallery-section">📸 Gallery</a>
     </div>
   </div>
 
@@ -212,7 +198,6 @@
 
     <section id="review-section">
       <h2>Reviews</h2>
-
       <div class="review">
         <div class="stars">★★★★★</div>
         <p>"Sediq is an amazing trainer! I've achieved all my goals thanks to his support."</p>
@@ -221,7 +206,6 @@
         <div class="stars">★★★★☆</div>
         <p>"Very professional and motivating. Highly recommend!"</p>
       </div>
-
       <h3>Submit Your Review</h3>
       <form id="review-form" onsubmit="submitReview(event)">
         <label for="rating">Rating:</label>
@@ -233,10 +217,8 @@
           <option value="2">★★☆☆☆</option>
           <option value="1">★☆☆☆☆</option>
         </select><br><br>
-
         <label for="review-text">Review:</label><br>
         <textarea id="review-text" rows="4" placeholder="Write your feedback..." required></textarea><br><br>
-
         <button type="submit">Submit Review</button>
       </form>
     </section>
@@ -255,16 +237,6 @@
       </video>
     </section>
 
-    <section id="gallery-section">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <img src="gallery1.jpg" alt="Gallery 1">
-        <img src="gallery2.jpg" alt="Gallery 2">
-        <img src="gallery3.jpg" alt="Gallery 3">
-        <img src="gallery4.jpg" alt="Gallery 4">
-      </div>
-    </section>
-
     <div class="lang-switch">
       <button onclick="setLanguage('en')">English</button>
       <button onclick="setLanguage('ar')">العربية</button>
@@ -276,6 +248,71 @@
   </div>
 
   <script>
-    const translations = {
-      en: {
-        direction:
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function setLanguage(lang) {
+      const elements = {
+        en: {
+          title: "Certified Fitness Trainer",
+          "about-heading": "About Me",
+          "about-text": "Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.",
+          "services-heading": "Services",
+          "services-list": [
+            "Personal Training (In-person & Online)",
+            "Customized Workout Plans",
+            "Nutrition Guidance",
+            "Group Fitness Sessions"
+          ],
+          "email-label": "Email:",
+          "phone-label": "Phone:",
+          "footer-text": "© 2025 Sediq Ibrahim Fitness Trainer"
+        },
+        ar: {
+          title: "مدرب لياقة معتمد",
+          "about-heading": "من أنا",
+          "about-text": "شغوف بمساعدة العملاء على تحقيق أهدافهم من خلال خطط تدريب شخصية ودعم مستمر.",
+          "services-heading": "الخدمات",
+          "services-list": [
+            "تدريب شخصي (حضوري وعبر الإنترنت)",
+            "خطط تمرين مخصصة",
+            "إرشادات غذائية",
+            "جلسات لياقة جماعية"
+          ],
+          "email-label": "البريد الإلكتروني:",
+          "phone-label": "الهاتف:",
+          "footer-text": "© 2025 صديق إبراهيم - مدرب لياقة"
+        }
+      };
+
+      const data = elements[lang];
+      for (const key in data) {
+        const el = document.getElementById(key);
+        if (!el) continue;
+
+        if (key === "services-list") {
+          el.innerHTML = "";
+          data[key].forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            el.appendChild(li);
+          });
+          el.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+        } else {
+          el.textContent = data[key];
+        }
+      }
+
+      document.body.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+    }
+
+    function submitReview(e) {
+      e.preventDefault();
+      alert("Thank you for your review!");
+      document.getElementById("review-form").reset();
+    }
+  </script>
+</body>
+</html>
