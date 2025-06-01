@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,241 +8,190 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('https://images.unsplash.com/photo-1583454110551-21c1f1f52f5c?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: white;
     }
 
     .language-switcher {
       position: fixed;
-      top: 20px;
-      left: 20px;
+      top: 10px;
+      left: 10px;
       z-index: 1000;
     }
 
     .language-switcher button {
-      padding: 8px 12px;
-      margin-right: 5px;
+      padding: 6px 12px;
+      margin: 2px;
       border: none;
       border-radius: 5px;
-      background: #27ae60;
+      background-color: #27ae60;
       color: white;
       cursor: pointer;
-    }
-
-    .menu-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #27ae60;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .menu {
-      position: fixed;
-      right: 0;
-      top: 0;
-      width: 250px;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      padding: 60px 20px;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-
-    .menu.open {
-      transform: translateX(0);
-    }
-
-    .menu a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      margin: 20px 0;
     }
 
     .container {
       max-width: 800px;
-      margin: 100px auto;
-      background: rgba(0, 0, 0, 0.75);
+      margin: 100px auto 20px;
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
-    .profile {
+    header {
       display: flex;
       align-items: center;
-      gap: 20px;
     }
 
-    .profile img {
-      width: 120px;
-      height: 120px;
+    header img {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      object-fit: cover;
+      margin-right: 20px;
       cursor: pointer;
-      border: 2px solid #27ae60;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.2);
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .menu-btn {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .menu-content {
+      display: none;
+      background-color: #222;
+      border-radius: 8px;
+      position: absolute;
+      right: 0;
+      margin-top: 10px;
+      padding: 10px;
+      min-width: 150px;
+    }
+
+    .menu-content a {
+      display: block;
+      color: white;
+      padding: 8px 10px;
+      text-decoration: none;
+    }
+
+    .menu-content a:hover {
+      background-color: #27ae60;
+    }
+
+    .show {
+      display: block;
+    }
+
+    section {
+      margin-top: 30px;
     }
 
     h2 {
-      border-bottom: 1px solid #27ae60;
-      padding-bottom: 6px;
+      border-bottom: 2px solid #27ae60;
+      padding-bottom: 5px;
     }
 
     ul {
+      list-style: disc;
       padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 6px;
-    }
-
-    .rating input {
-      display: none;
-    }
-
-    .rating label {
-      float: right;
-      font-size: 24px;
-      color: #ccc;
-      padding: 0 5px;
-      cursor: pointer;
-    }
-
-    .rating input:checked ~ label,
-    .rating label:hover,
-    .rating label:hover ~ label {
-      color: gold;
-    }
-
-    form {
-      margin-top: 20px;
-    }
-
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 8px;
-      border: none;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-
-    button.submit-btn {
-      background: #27ae60;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    video {
-      width: 100%;
-      max-width: 480px;
-      margin-top: 20px;
-      border-radius: 10px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    footer {
-      text-align: center;
-      color: #ccc;
-      margin-top: 40px;
-      font-size: 14px;
-    }
-
-    .review {
-      margin-bottom: 20px;
     }
 
     .stars {
       color: gold;
-      font-size: 20px;
-      margin-top: -10px;
     }
 
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
+    form input, form textarea {
       width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.9);
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
     }
 
-    .modal-content {
-      display: block;
-      margin: 5% auto;
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 10px;
-    }
-
-    .modal-content img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
-      font-size: 40px;
-      font-weight: bold;
-      color: #fff;
+    form button {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+    }
+
+    video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 30px auto 0;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <!-- Language Toggle -->
+  <!-- Language Switcher -->
   <div class="language-switcher">
     <button onclick="setLanguage('en')">English</button>
     <button onclick="setLanguage('ar')">العربية</button>
   </div>
 
   <!-- Menu -->
-  <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
-  <div class="menu" id="sideMenu">
-    <a href="#about" data-i18n="menu_about">About</a>
-    <a href="#services" data-i18n="menu_services">Services</a>
-    <a href="#reviews" data-i18n="menu_reviews">Reviews</a>
-    <a href="#reviewForm" data-i18n="menu_form">Submit Review</a>
-  </div>
+  <nav>
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <div class="menu-content" id="menu">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+  </nav>
 
   <div class="container">
-    <!-- Profile -->
-    <div class="profile">
-      <img src="habibi.jpg" alt="Profile Picture" onclick="openModal()">
+    <header>
+      <a href="habibi.jpg" target="_blank">
+        <img src="habibi.jpg" alt="Profile Picture" />
+      </a>
       <div>
         <h1 data-i18n="name">Sediq Ibrahim</h1>
         <p data-i18n="title">Certified Fitness Trainer</p>
       </div>
-    </div>
+    </header>
 
-    <!-- About -->
-    <section id="about">
-      <h2 data-i18n="about_header">About Me</h2>
+    <section>
+      <h2 data-i18n="aboutTitle">About Me</h2>
       <p data-i18n="about">Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.</p>
     </section>
 
-    <!-- Services -->
     <section id="services">
-      <h2 data-i18n="services_header">Services</h2>
+      <h2 data-i18n="servicesTitle">Services</h2>
       <ul>
         <li data-i18n="service1">Personal Training (In-person & Online)</li>
         <li data-i18n="service2">Customized Workout Plans</li>
@@ -251,51 +200,29 @@
       </ul>
     </section>
 
-    <!-- Reviews -->
     <section id="reviews">
-      <h2 data-i18n="reviews_header">Reviews</h2>
-
-      <div class="review">
-        <p data-i18n="review1">"Amazing trainer, very supportive!"</p>
-        <p class="stars">★★★★★</p>
-      </div>
-
-      <div class="review">
-        <p data-i18n="review2">"مدرب رائع، ودود للغاية!"</p>
-        <p class="stars">★★★★★</p>
-      </div>
+      <h2 data-i18n="reviewsTitle">Reviews</h2>
+      <p>⭐️⭐️⭐️⭐️⭐️ - <em>Amazing trainer! Helped me reach my goals fast.</em></p>
+      <p>⭐️⭐️⭐️⭐️⭐️ - <em>مدرب رائع وداعم جدًا. ساعدني كثيرًا في الوصول للياقتي.</em></p>
     </section>
 
-    <!-- Submit Review Form -->
-    <section id="reviewForm">
-      <h2 data-i18n="form_header">Submit a Review</h2>
+    <section id="review-form">
+      <h2 data-i18n="submitReview">Submit a Review</h2>
       <form>
         <input type="text" placeholder="Your Name" />
-        <textarea rows="4" placeholder="Your Review"></textarea>
-        <div class="rating">
-          <input type="radio" id="star5" name="rating" /><label for="star5">&#9733;</label>
-          <input type="radio" id="star4" name="rating" /><label for="star4">&#9733;</label>
-          <input type="radio" id="star3" name="rating" /><label for="star3">&#9733;</label>
-          <input type="radio" id="star2" name="rating" /><label for="star2">&#9733;</label>
-          <input type="radio" id="star1" name="rating" /><label for="star1">&#9733;</label>
-        </div>
-        <button class="submit-btn" type="submit" data-i18n="submit_btn">Submit</button>
+        <textarea placeholder="Write your review..."></textarea>
+        <button type="submit">Submit</button>
       </form>
     </section>
 
-    <!-- Video -->
-    <video controls>
-      <source src="fitness-demo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <!-- Modal -->
-  <div id="imgModal" class="modal" onclick="closeModal()">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-      <img src="habibi.jpg" alt="Enlarged Profile Picture">
-    </div>
+    <!-- Video Section -->
+    <section>
+      <h2 data-i18n="demo">Workout Demo</h2>
+      <video controls>
+        <source src="fitness-demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
   </div>
 
   <footer>
@@ -303,58 +230,34 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('sideMenu').classList.toggle('open');
-    }
-
-    function openModal() {
-      document.getElementById('imgModal').style.display = "block";
-    }
-
-    function closeModal() {
-      document.getElementById('imgModal').style.display = "none";
-    }
-
     const translations = {
       ar: {
         name: "صديق إبراهيم",
         title: "مدرب لياقة معتمد",
-        about_header: "من أنا",
+        aboutTitle: "من أنا",
         about: "شغوف بمساعدة العملاء على تحقيق أهدافهم من خلال خطط تدريب شخصية ودعم مستمر.",
-        services_header: "الخدمات",
-        service1: "تدريب شخصي (حضورياً وعبر الإنترنت)",
+        servicesTitle: "الخدمات",
+        service1: "تدريب شخصي (حضوري وعبر الإنترنت)",
         service2: "خطط تمرين مخصصة",
-        service3: "إرشادات غذائية",
+        service3: "إرشادات التغذية",
         service4: "جلسات لياقة جماعية",
-        reviews_header: "المراجعات",
-        review1: "مدرب رائع وداعم للغاية!",
-        review2: "مدرب رائع، ودود للغاية!",
-        form_header: "أضف تقييمك",
-        submit_btn: "إرسال",
-        menu_about: "من أنا",
-        menu_services: "الخدمات",
-        menu_reviews: "المراجعات",
-        menu_form: "أضف تقييم"
+        reviewsTitle: "المراجعات",
+        submitReview: "إرسال مراجعة",
+        demo: "عرض تمرين"
       },
       en: {
         name: "Sediq Ibrahim",
         title: "Certified Fitness Trainer",
-        about_header: "About Me",
+        aboutTitle: "About Me",
         about: "Passionate about helping clients reach their fitness goals through personalized training plans and ongoing support.",
-        services_header: "Services",
+        servicesTitle: "Services",
         service1: "Personal Training (In-person & Online)",
         service2: "Customized Workout Plans",
         service3: "Nutrition Guidance",
         service4: "Group Fitness Sessions",
-        reviews_header: "Reviews",
-        review1: "Amazing trainer, very supportive!",
-        review2: "Great coach, super friendly!",
-        form_header: "Submit a Review",
-        submit_btn: "Submit",
-        menu_about: "About",
-        menu_services: "Services",
-        menu_reviews: "Reviews",
-        menu_form: "Submit Review"
+        reviewsTitle: "Reviews",
+        submitReview: "Submit a Review",
+        demo: "Workout Demo"
       }
     };
 
@@ -364,7 +267,20 @@
         el.textContent = translations[lang][key];
       });
     }
-  </script>
 
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    // Close menu on outside click
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-btn')) {
+        const dropdown = document.getElementById("menu");
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      }
+    };
+  </script>
 </body>
 </html>
