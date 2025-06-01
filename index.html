@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sediq Ibrahim - Fitness Trainer</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: url('https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-image: url('https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=1400&q=80');
+      background-repeat: no-repeat;
       background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: #fff;
     }
-
     .container {
       max-width: 480px;
       margin: 60px auto;
@@ -20,14 +22,12 @@
       padding: 20px;
       border-radius: 12px;
     }
-
     header {
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 25px;
     }
-
     header img {
       width: 100px;
       height: 100px;
@@ -35,42 +35,34 @@
       object-fit: cover;
       cursor: pointer;
     }
-
     header h1 {
       margin: 0;
       font-size: 26px;
       color: #27ae60;
     }
-
     section {
       margin-bottom: 25px;
     }
-
     section h2 {
       border-bottom: 2px solid #27ae60;
       padding-bottom: 6px;
       margin-bottom: 12px;
       font-size: 20px;
     }
-
     ul {
       padding-left: 20px;
     }
-
     ul li {
       margin-bottom: 8px;
     }
-
     a {
       color: #27ae60;
     }
-
     .menu {
       position: fixed;
       top: 20px;
       right: 20px;
     }
-
     .menu select {
       padding: 8px;
       font-size: 16px;
@@ -80,13 +72,11 @@
       color: white;
       font-weight: bold;
     }
-
     .language-switcher {
       position: fixed;
       top: 20px;
       left: 20px;
     }
-
     .language-switcher button {
       padding: 8px 12px;
       margin-right: 4px;
@@ -96,7 +86,6 @@
       color: white;
       cursor: pointer;
     }
-
     .stars {
       display: flex;
       flex-direction: row-reverse;
@@ -104,30 +93,25 @@
       justify-content: start;
       margin-bottom: 10px;
     }
-
     .stars input {
       display: none;
     }
-
     .stars label {
       font-size: 24px;
       color: gray;
       cursor: pointer;
     }
-
     .stars input:checked ~ label,
     .stars label:hover,
     .stars label:hover ~ label {
       color: gold;
     }
-
     textarea {
       width: 100%;
       padding: 8px;
       border-radius: 6px;
       margin-bottom: 10px;
     }
-
     button[type="submit"] {
       background-color: #27ae60;
       color: white;
@@ -136,20 +120,16 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     footer {
       text-align: center;
       font-size: 14px;
       color: #ccc;
     }
-
     video {
       width: 100%;
       border-radius: 8px;
       margin-top: 10px;
     }
-
-    /* Modal styles */
     .modal {
       display: none;
       position: fixed;
@@ -162,14 +142,12 @@
       justify-content: center;
       align-items: center;
     }
-
     .modal img {
       max-width: 90%;
       max-height: 90%;
       border-radius: 10px;
       box-shadow: 0 0 15px black;
     }
-
     .modal .close {
       position: absolute;
       top: 20px;
@@ -182,23 +160,19 @@
 </head>
 <body>
 
-  <!-- Language Buttons -->
   <div class="language-switcher">
     <button onclick="setLanguage('en')">English</button>
     <button onclick="setLanguage('ar')">العربية</button>
   </div>
 
-  <!-- Menu -->
   <div class="menu">
     <select onchange="handleMenu(this)">
       <option disabled selected>Menu</option>
-      <option value="gallery">Gallery</option>
       <option value="services">Services</option>
       <option value="reviews">Reviews</option>
     </select>
   </div>
 
-  <!-- Main Container -->
   <div class="container">
     <header>
       <img src="habibi.jpg" alt="Profile Picture" onclick="openModal()" />
@@ -262,22 +236,16 @@
     </footer>
   </div>
 
-  <!-- Modal -->
   <div class="modal" id="imageModal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img src="habibi.jpg" alt="Full Profile Picture" />
   </div>
 
-  <!-- JavaScript -->
   <script>
     function handleMenu(select) {
       const value = select.value;
-      if (value === 'gallery') {
-        window.location.href = 'gallery.html';
-      } else {
-        const section = document.getElementById(value);
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
-      }
+      const section = document.getElementById(value);
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
     }
 
     function submitReview(event) {
@@ -298,7 +266,6 @@
       document.getElementById('imageModal').style.display = 'none';
     }
 
-    // Close modal when clicking outside the image
     window.onclick = function (e) {
       const modal = document.getElementById('imageModal');
       if (e.target === modal) {
