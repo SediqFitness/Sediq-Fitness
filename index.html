@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sediq Ibrahim - Fitness Trainer</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       font-family: Arial, sans-serif;
       background: url('background.jpg') no-repeat center center fixed;
@@ -44,8 +45,8 @@
     }
 
     header img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       margin-right: 20px;
       cursor: pointer;
@@ -141,7 +142,7 @@
 
     video {
       width: 100%;
-      max-width: 100%;
+      max-width: 600px;
       height: auto;
       display: block;
       margin: 30px auto 0;
@@ -176,8 +177,8 @@
 
   <div class="container">
     <header>
-      <a href="Sediq Fitness.jpg" target="_blank">
-        <img src="Sediq Fitness.jpg" alt="Profile Picture" />
+      <a href="SediqFitness.jpg" target="_blank">
+        <img src="SediqFitness.jpg" alt="Profile Picture" />
       </a>
       <div>
         <h1 data-i18n="name">Sediq Ibrahim</h1>
@@ -272,7 +273,7 @@
       document.getElementById("menu").classList.toggle("show");
     }
 
-    // Close menu on outside click
+    // Auto-close menu when clicking outside
     window.onclick = function(event) {
       if (!event.target.matches('.menu-btn')) {
         const dropdown = document.getElementById("menu");
