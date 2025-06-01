@@ -159,6 +159,16 @@
       font-size: 14px;
     }
 
+    .review {
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 20px;
+      margin-top: -10px;
+    }
+
     /* Modal styles */
     .modal {
       display: none;
@@ -244,8 +254,16 @@
     <!-- Reviews -->
     <section id="reviews">
       <h2 data-i18n="reviews_header">Reviews</h2>
-      <p data-i18n="review1">"Amazing trainer, very supportive!"</p>
-      <p data-i18n="review2">"مدرب رائع، ودود للغاية!"</p>
+
+      <div class="review">
+        <p data-i18n="review1">"Amazing trainer, very supportive!"</p>
+        <p class="stars">★★★★★</p>
+      </div>
+
+      <div class="review">
+        <p data-i18n="review2">"مدرب رائع، ودود للغاية!"</p>
+        <p class="stars">★★★★★</p>
+      </div>
     </section>
 
     <!-- Submit Review Form -->
