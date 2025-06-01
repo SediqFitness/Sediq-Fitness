@@ -22,13 +22,25 @@
       border-radius: 10px;
     }
 
-    header, footer, section, .lang-switch {
-      text-align: center;
-      margin-bottom: 20px;
+    header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    header img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     h1 {
       color: #27ae60;
+      margin: 0;
     }
 
     ul {
@@ -66,6 +78,17 @@
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
+
+    .lang-switch {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
@@ -76,8 +99,11 @@
     </div>
 
     <header>
-      <h1>Sediq Ibrahim</h1>
-      <p id="title">Certified Fitness Trainer</p>
+      <img src="habibi.jpg" alt="Logo" />
+      <div>
+        <h1>Sediq Ibrahim</h1>
+        <p id="title">Certified Fitness Trainer</p>
+      </div>
     </header>
 
     <section>
@@ -105,6 +131,7 @@
       <h2 id="demo-heading">Workout Demo</h2>
       <video width="100%" controls>
         <source src="fitness-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
     </section>
 
