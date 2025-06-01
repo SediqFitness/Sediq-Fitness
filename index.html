@@ -33,6 +33,7 @@
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
+      cursor: pointer;
     }
 
     header h1 {
@@ -75,17 +76,20 @@
       font-size: 16px;
       border-radius: 6px;
       border: none;
+      background-color: #27ae60;
+      color: white;
+      font-weight: bold;
     }
 
     .language-switcher {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      top: 20px;
+      left: 20px;
     }
 
     .language-switcher button {
       padding: 8px 12px;
-      margin-left: 4px;
+      margin-right: 4px;
       border: none;
       border-radius: 6px;
       background-color: #27ae60;
@@ -138,10 +142,53 @@
       font-size: 14px;
       color: #ccc;
     }
+
+    video {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px black;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Language Buttons -->
+  <div class="language-switcher">
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('ar')">العربية</button>
+  </div>
+
+  <!-- Menu -->
   <div class="menu">
     <select onchange="handleMenu(this)">
       <option disabled selected>Menu</option>
@@ -151,9 +198,10 @@
     </select>
   </div>
 
+  <!-- Main Container -->
   <div class="container">
     <header>
-      <img src="habibi.jpg" alt="Profile Picture" />
+      <img src="habibi.jpg" alt="Profile Picture" onclick="openModal()" />
       <div>
         <h1>Sediq Ibrahim</h1>
         <p>Certified Fitness Trainer</p>
@@ -201,16 +249,26 @@
       <p>Phone: <a href="tel:+966508270324">+966508270324</a></p>
     </section>
 
+    <section id="video">
+      <h2>Workout Demo</h2>
+      <video controls>
+        <source src="fitness-demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
     <footer>
       &copy; 2025 Sediq Ibrahim Fitness Trainer
     </footer>
   </div>
 
-  <div class="language-switcher">
-    <button onclick="setLanguage('en')">English</button>
-    <button onclick="setLanguage('ar')">العربية</button>
+  <!-- Modal -->
+  <div class="modal" id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img src="habibi.jpg" alt="Full Profile Picture" />
   </div>
 
+  <!-- JavaScript -->
   <script>
     function handleMenu(select) {
       const value = select.value;
@@ -230,7 +288,22 @@
 
     function setLanguage(lang) {
       alert("Switched to: " + (lang === 'en' ? 'English' : 'Arabic'));
-      // Optional: Implement actual language switching here
+    }
+
+    function openModal() {
+      document.getElementById('imageModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside the image
+    window.onclick = function (e) {
+      const modal = document.getElementById('imageModal');
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
     }
   </script>
 
