@@ -89,9 +89,92 @@
       font-size: 14px;
       color: #777;
     }
+
+    /* Floating menu */
+    .floating-menu {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      z-index: 999;
+      text-align: right;
+    }
+
+    .floating-menu button {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .dropdown-menu {
+      display: none;
+      background-color: white;
+      border: 1px solid #ccc;
+      margin-top: 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* Star Ratings */
+    .review {
+      margin-bottom: 15px;
+    }
+
+    .stars {
+      color: #f5c518;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
   </style>
 </head>
 <body>
+  <!-- Floating Menu -->
+  <div class="floating-menu">
+    <button onclick="toggleMenu()">☰ Menu</button>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="#gallery-section">📸 Gallery</a>
+      <a href="#services-heading">🏋️ Services</a>
+      <a href="#review-section">⭐ Reviews</a>
+      <a href="#contact-heading">📞 Contact</a>
+      <a href="#demo-heading">🎥 Workout Demo</a>
+    </div>
+  </div>
+
   <div class="container" id="main-container">
     <div class="lang-switch">
       <button onclick="setLanguage('en')">English</button>
@@ -121,18 +204,47 @@
       </ul>
     </section>
 
-    <section>
-      <h2 id="contact-heading">Contact</h2>
+    <section id="review-section">
+      <h2>Reviews</h2>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Sediq is an amazing trainer! I've achieved all my goals thanks to his support."</p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★☆</div>
+        <p>"Very professional and motivating. Highly recommend!"</p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Creative workout plans and great results!"</p>
+      </div>
+    </section>
+
+    <section id="contact-heading">
+      <h2>Contact</h2>
       <p id="email-label">Email: <a class="contact-link" href="mailto:sdyqaldkany@gmail.com">sdyqaldkany@gmail.com</a></p>
       <p id="phone-label">Phone: <a class="contact-link" href="tel:+0508270324">0508270324</a></p>
     </section>
 
-    <section>
-      <h2 id="demo-heading">Workout Demo</h2>
+    <section id="demo-heading">
+      <h2>Workout Demo</h2>
       <video width="100%" controls>
         <source src="fitness-demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+    </section>
+
+    <section id="gallery-section">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="gallery1.jpg" alt="Gallery 1">
+        <img src="gallery2.jpg" alt="Gallery 2">
+        <img src="gallery3.jpg" alt="Gallery 3">
+        <img src="gallery4.jpg" alt="Gallery 4">
+      </div>
     </section>
 
     <footer>
@@ -197,16 +309,26 @@
         list.appendChild(li);
       });
 
-      document.getElementById('contact-heading').textContent = t.contactHeading;
+      document.getElementById('contact-heading').firstElementChild.textContent = t.contactHeading;
       document.getElementById('email-label').childNodes[0].nodeValue = t.emailLabel + ' ';
       document.getElementById('phone-label').childNodes[0].nodeValue = t.phoneLabel + ' ';
-      document.getElementById('demo-heading').textContent = t.demoHeading;
+      document.getElementById('demo-heading').firstElementChild.textContent = t.demoHeading;
       document.getElementById('footer-text').textContent = t.footerText;
     }
 
-    // Default to English
-    setLanguage('en');
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".dropdown-menu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("dropdownMenu").style.display = "none";
+        });
+      });
+      setLanguage('en');
+    });
   </script>
 </body>
 </html>
-
